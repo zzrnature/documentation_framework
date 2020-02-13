@@ -24,7 +24,6 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
-//import static com.example.woundmanage.Constants.BACK_PATIENT;
 
 public class PatientListFragment extends Fragment {
 
@@ -62,7 +61,7 @@ public class PatientListFragment extends Fragment {
         // inflate the layout
         View view = inflater.inflate(R.layout.fragment_patient_list, container, false);
         // from the view, find the id from the view
-        mPatientRecyclerView = (RecyclerView) view.findViewById(R.id.patient_recycler_view);
+        mPatientRecyclerView =  view.findViewById(R.id.patient_recycler_view);
         // set a layout manager
         mPatientRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -151,7 +150,7 @@ public class PatientListFragment extends Fragment {
 
 
             // itemview holds a reference to the entire View you passed into super(view)
-            mTitleTextView = (TextView) itemView.findViewById(R.id.patient_title);
+            mTitleTextView =  itemView.findViewById(R.id.patient_title);
             //mDateTextView = (TextView) itemView.findViewById(R.id.patient_date);
         }
 
@@ -161,7 +160,6 @@ public class PatientListFragment extends Fragment {
             mTitleTextView.setText(mPatient.getTitle());
             //mDateTextView.setText(mPatient.getDate().toString());
         }
-
 
         @Override
         public void onClick(View view) {
