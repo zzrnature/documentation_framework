@@ -1,0 +1,36 @@
+    <!--  layout for the record editing page  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_margin="16dp"
+android:orientation="vertical">
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:id="@+id/record_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="record name"/>
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:id="@+id/record_patient_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="patinent name"/>
+
+
+    <EditText
+        android:id="@+id/record_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="record title"/>
+
+    <Button
+        android:id="@+id/record_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="record_save"/>
+
+
+</LinearLayout>
