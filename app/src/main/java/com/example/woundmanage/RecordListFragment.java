@@ -2,6 +2,7 @@ package com.example.woundmanage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,14 +20,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 
 public class RecordListFragment extends Fragment {
 
@@ -41,7 +40,10 @@ public class RecordListFragment extends Fragment {
     // the passed in patient from the patient list;
     // each record must have a patient
     private Patient mPatient; // hold a patient object
-    private TextView mTitleField;
+    private TextView mPatientName;
+//    private TextView mPatientDate;
+    private TextView mPaientInfo1;
+    private TextView mPaientInfo2;
 
 
     // Used by the container activity; create fragment with args
@@ -87,15 +89,27 @@ public class RecordListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_record_list, container, false);
 
 
+        mPatientName = v.findViewById(R.id.record_list_patient_name);
+        mPaientInfo1 = v.findViewById(R.id.record_list_patient_info1);
+        mPaientInfo2 = v.findViewById(R.id.record_list_patient_info2);
+
+
+
+        mPatientName.setText(mPatient.getPatientName());
+        mPaientInfo1.setText(mPatient.getPatientInfor1());
+        mPaientInfo2.setText(mPatient.getPatientInfor2());
+
+
+        //mTitleField = (TextView) v.findViewById(R.id.record_list_patient_title); // find the widget
+        //mTitleField.setText(mPatient.getPatientName());
+
+
+
         // from the view, find the id from the view
-        mRecordRecyclerView = (RecyclerView) v.findViewById(R.id.record_recycler_view);
+        mRecordRecyclerView = v.findViewById(R.id.record_recycler_view);
         // set a layout manager
         mRecordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-
-        mTitleField = (TextView) v.findViewById(R.id.record_list_patient_title); // find the widget
-        mTitleField.setText(mPatient.getTitle());
 
         updateUI();
 
@@ -132,7 +146,7 @@ public class RecordListFragment extends Fragment {
                 Record record = new Record(mPatient);
 
                 // foo
-                record.setTitle("record 1");
+                record.setTitle("记录");
 
                 // using the RecordActivity delegation method: newIntent_record
                 Intent intent = RecordEditActivity.newIntent_record(getActivity(), record);
@@ -168,7 +182,8 @@ public class RecordListFragment extends Fragment {
 
         // to handle the patient in bind method
         private Record mRecord;
-        private TextView mTitleTextView;
+        private TextView mInfoTextView;
+        private TextView mDateTextView;
         //private TextHView TextView;
 
 
@@ -184,15 +199,18 @@ public class RecordListFragment extends Fragment {
 
 
             // itemview holds a reference to the entire View you passed into super(view)
-            mTitleTextView = (TextView) itemView.findViewById(R.id.record_title);
+            mInfoTextView = itemView.findViewById(R.id.record_info);
+            mDateTextView = itemView.findViewById(R.id.record_date);
+
             //mDateTextView = (TextView) itemView.findViewById(R.id.patient_date);
         }
 
         // data change, used by adaptor
         public void bind(Record record) {
             mRecord = record;
-            mTitleTextView.setText(mRecord.getTitle());
-            //mDateTextView.setText(mPatient.getDate().toString());
+            mInfoTextView.setText(mRecord.getRecordInfo());
+            mDateTextView.setText(mRecord.getDate().toString().substring(0,11));
+
         }
 
         @Override

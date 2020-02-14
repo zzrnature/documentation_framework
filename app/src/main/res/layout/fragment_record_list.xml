@@ -6,16 +6,22 @@
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
-        android:id="@+id/record_list_patient_title"
+        android:id="@+id/record_list_patient_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/patient_title_label"/>
+        android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/test_in_record"
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:id="@+id/record_list_patient_info1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="record list"/>
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:id="@+id/record_list_patient_info2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

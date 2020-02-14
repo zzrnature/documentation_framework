@@ -7,10 +7,10 @@ android:orientation="vertical">
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
-        android:id="@+id/record_name"
+        android:id="@+id/record_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="record name"/>
+        android:text="record title"/>
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
@@ -21,10 +21,10 @@ android:orientation="vertical">
 
 
     <EditText
-        android:id="@+id/record_title"
+        android:id="@+id/record_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="record title"/>
+        android:hint="详情"/>
 
     <Button
         android:id="@+id/record_save"

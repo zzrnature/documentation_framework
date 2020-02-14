@@ -69,7 +69,7 @@ public class RecordBrowseFragment extends Fragment {
 
 
         mRecordInfo = v.findViewById(R.id.record_info); // find the widget
-        mRecordInfo.setText(mRecord.getTitle());
+        mRecordInfo.setText(mRecord.getRecordInfo());
 
 
         mRecordPatientName = v.findViewById(R.id.record_patient_name);

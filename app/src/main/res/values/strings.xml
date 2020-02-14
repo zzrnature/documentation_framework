@@ -2,8 +2,15 @@
     <string name="app_name">WoundManage</string>
     <string name="patient_title_hint">Enter a title for the patient.</string>
     <string name="patient_title_label">Title</string>
-    <string name="patient_details_label">Details</string>
     <string name="patient_solved_label">Solved</string>
+
+
+
+
+    <string name="patient_name_hint">输入患者姓名</string>
+    <string name="patient_details_label">患者情况</string>
+    <string name="patient_info1_hint">患者信息1</string>
+    <string name="patient_info2_hint">患者信息2</string>
 
 
 

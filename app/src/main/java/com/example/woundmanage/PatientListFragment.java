@@ -22,7 +22,6 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.SaveListener;
 
 
 public class PatientListFragment extends Fragment {
@@ -135,8 +134,8 @@ public class PatientListFragment extends Fragment {
 
         // to handle the patient in bind method
         private Patient mPatient;
-        private TextView mTitleTextView;
-        //private TextView mDateTextView;
+        private TextView mPatientNameTextView;
+        private TextView mDateTextView;
 
         // in constructor, we pass the view and pull out interested widgets
         // also set listeners
@@ -150,21 +149,21 @@ public class PatientListFragment extends Fragment {
 
 
             // itemview holds a reference to the entire View you passed into super(view)
-            mTitleTextView =  itemView.findViewById(R.id.patient_title);
-            //mDateTextView = (TextView) itemView.findViewById(R.id.patient_date);
+            mPatientNameTextView =  itemView.findViewById(R.id.patient_name);
+            mDateTextView =  itemView.findViewById(R.id.patient_date);
         }
 
         // data change, used by adaptor
         public void bind(Patient patient) {
             mPatient = patient;
-            mTitleTextView.setText(mPatient.getTitle());
-            //mDateTextView.setText(mPatient.getDate().toString());
+            mPatientNameTextView.setText(mPatient.getPatientName());
+            mDateTextView.setText(mPatient.getDate().toString().substring(0,11));
         }
 
         @Override
         public void onClick(View view) {
 
-            toast("clicked" + mPatient.getTitle());
+            toast("clicked" + mPatient.getPatientName());
 
             // create an intent to start another patient edit activity
             // Here we use the public method of patient activity to create the intent

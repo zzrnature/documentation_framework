@@ -2,8 +2,6 @@
 
 package com.example.woundmanage;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -43,11 +40,13 @@ public class PatientEditFragment extends Fragment {
     //----------------------------------------------------------------
     // widgets handle
     //----------------------------------------------------------------
-    private EditText mTitleField;
-    private Button mDateButton;
-    private CheckBox mSolvedCheckBox;
+    private EditText mPatientNameField;
+    private EditText mPatientInfor1Field;
+    private EditText mPatientInfor2Field;
     private Button mTestSaveButton;
 
+//    private Button mDateButton;
+//    private CheckBox mSolvedCheckBox;
 
 
     //----------------------------------------------------------------
@@ -100,6 +99,7 @@ public class PatientEditFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_patient, container, false);
 
 
+
         // zzr added button
         // For the saving of the editing patient
         // Set the result for the list view; return the edited patient
@@ -115,6 +115,7 @@ public class PatientEditFragment extends Fragment {
                     public void done(String objectId, BmobException e) {
                         if(e==null){
                             toast("添加patient成功，返回objectId为："+objectId);
+                            mTestSaveButton.setEnabled(false); // make the buttion unavailable
 
                         }else{
                             toast("创建patient失败：" + e.getMessage());
@@ -122,29 +123,29 @@ public class PatientEditFragment extends Fragment {
                     }
                 });
 
-                getActivity().onBackPressed();
+                //getActivity().onBackPressed();
 
             }
         });
 
-        // text field
-        mTitleField = (EditText) v.findViewById(R.id.patient_title); // find the widget
 
-        // mPatient is from the list view, so we use that to update the view
-        mTitleField.setText(mPatient.getTitle());
+        //------------------------------------------
+        // patient name editing
+        //------------------------------------------
+        // text field
+        mPatientNameField =  v.findViewById(R.id.patient_name); // find the widget
 
         // add listener
-        mTitleField.addTextChangedListener(new TextWatcher() {
+        mPatientNameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // This space intentionally left blank
             }
 
-            // CharSequence that is the user’s input
-            // This method returns a string, which you then use to set the Patient’s title.
+            // Change patient name
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mPatient.setTitle(s.toString());
+                mPatient.setPatientName(s.toString());
 
             }
             @Override
@@ -155,26 +156,78 @@ public class PatientEditFragment extends Fragment {
 
 
 
+        //------------------------------------------
+        // patient infor1 editing
+        //------------------------------------------
+        // text field
+        mPatientInfor1Field = v.findViewById(R.id.patient_info1);
+
+        // add listener
+        mPatientInfor1Field.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            // Change patient_info1 name
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPatient.setPatientInfor1(s.toString());
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
+
+
+        //------------------------------------------
+        // patient infor2 editing
+        //------------------------------------------
+        // text field
+        mPatientInfor2Field = v.findViewById(R.id.patient_info2);
+
+        // add listener
+        mPatientInfor2Field.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This space intentionally left blank
+            }
+
+            // Change patient_info2 name
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPatient.setPatientInfor2(s.toString());
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This one too
+            }
+        });
+
+
         // button
         // find the button; patient_date is the button's id
-        mDateButton = (Button) v.findViewById(R.id.patient_date);
+        // mDateButton = (Button) v.findViewById(R.id.patient_date);
 
         // show the patient's date on the button
-        mDateButton.setText(mPatient.getDate().toString());
+//        mDateButton.setText(mPatient.getDate().toString());
 
         // ensures it will not respond to the user pressing
-        mDateButton.setEnabled(false);
+//        mDateButton.setEnabled(false);
 
 
 
         // checkbox listener
-        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.patient_solved);
-        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mPatient.setSolved(isChecked); // set patient data
-            }
-        });
+//        mSolvedCheckBox = (CheckBox)v.findViewById(R.id.patient_solved);
+//        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                mPatient.setSolved(isChecked); // set patient data
+//            }
+//        });
         return v;
     }
 

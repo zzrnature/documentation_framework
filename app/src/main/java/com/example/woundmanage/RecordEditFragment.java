@@ -1,7 +1,5 @@
 package com.example.woundmanage;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,7 +71,7 @@ public class RecordEditFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //toast("e!!!!!!!!!!!!!!!!!!!!!!!!!!!!dit entered");
+
         Bmob.initialize(getContext(), "67893c5b8d8829a456b0fd2153a19d59");
 
 
@@ -98,10 +95,10 @@ public class RecordEditFragment extends Fragment {
 
         mTextView_record_patient_name = v.findViewById(R.id.record_patient_name);
 
-        mTextView_record_patient_name.setText(mRecord.getPatient().getTitle());
+        mTextView_record_patient_name.setText(mRecord.getPatient().getPatientName());
+
 
         mTextView_record_title = v.findViewById(R.id.record_title);
-
         mTextView_record_title.setText(mRecord.getTitle());
 
 
@@ -121,6 +118,7 @@ public class RecordEditFragment extends Fragment {
                     public void done(String objectId, BmobException e) {
                         if(e==null){
                             toast("添加record成功，返回objectId为："+objectId);
+                            mButton_save_record.setEnabled(false);
 
                         }else{
                             toast("创建record失败：" + e.getMessage());
@@ -128,16 +126,17 @@ public class RecordEditFragment extends Fragment {
                     }
                 });
 
-                getActivity().onBackPressed();
+                //getActivity().onBackPressed();
             }
         });
 
 
         // text field
-        mTitleField_record_info = (EditText) v.findViewById(R.id.record_title); // find the widget
-
-        // mPatient is from the list view, so we use that to update the view
-        mTitleField_record_info.setText(mRecord.getTitle());
+        mTitleField_record_info = v.findViewById(R.id.record_info);
+//
+//
+//        // mPatient is from the list view, so we use that to update the view
+//        mTitleField_record_info.setText(mRecord.getTitle());
 
         // add listener
         mTitleField_record_info.addTextChangedListener(new TextWatcher() {
@@ -150,7 +149,7 @@ public class RecordEditFragment extends Fragment {
             // This method returns a string, which you then use to set the Patient’s title.
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mRecord.setTitle(s.toString());
+                mRecord.setRecordInfo(s.toString());
 
             }
             @Override

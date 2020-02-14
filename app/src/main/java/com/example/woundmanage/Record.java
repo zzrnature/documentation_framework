@@ -3,7 +3,6 @@ package com.example.woundmanage;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 import cn.bmob.v3.BmobObject;
 
@@ -13,6 +12,10 @@ public class Record extends BmobObject implements Serializable {
     private String pPatientId;
 
     private String pTitle;
+
+
+
+    private String RecordInfo;
 
     private Date pDate;
 
@@ -29,7 +32,7 @@ public class Record extends BmobObject implements Serializable {
         pPatientId = p.getObjectId();
         pDate = new Date();
         mPatient = p;
-        mPatientName = p.getTitle();
+        mPatientName = p.getPatientName();
     }
 
     //public UUID getId() {
@@ -67,6 +70,14 @@ public class Record extends BmobObject implements Serializable {
 
     public void setSolved(boolean pSolved) {
         this.pSolved = pSolved;
+    }
+
+    public String getRecordInfo() {
+        return RecordInfo;
+    }
+
+    public void setRecordInfo(String recordInfo) {
+        RecordInfo = recordInfo;
     }
 
 
