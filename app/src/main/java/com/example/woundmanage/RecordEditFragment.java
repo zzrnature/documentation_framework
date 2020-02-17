@@ -92,6 +92,9 @@ public class RecordEditFragment extends Fragment {
         // inflate the fragment's layout
         View v = inflater.inflate(R.layout.fragment_record_edit, container, false);
 
+        getActivity().setTitle("添加记录");
+
+
 
         mTextView_record_patient_name = v.findViewById(R.id.record_patient_name);
 

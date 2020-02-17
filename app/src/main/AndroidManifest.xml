@@ -31,14 +31,14 @@
 
 
 
-        <activity android:name=".PatientEditActivity">
-
+        <activity android:name=".PatientEditActivity"
+            android:label="@string/title_patient_add">
         </activity>
 
 
 
-        <activity android:name=".RecordListActivity">
-
+        <activity android:name=".RecordListActivity"
+            android:label="@string/title_patient_record_list">
         </activity>
 
 

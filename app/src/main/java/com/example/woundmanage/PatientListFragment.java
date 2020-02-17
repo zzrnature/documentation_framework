@@ -65,6 +65,11 @@ public class PatientListFragment extends Fragment {
         mPatientRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
+        getActivity().setTitle("患者列表");
+
+
+
+
         // for the adapter
         updateUI();
 

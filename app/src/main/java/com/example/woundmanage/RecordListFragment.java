@@ -89,6 +89,9 @@ public class RecordListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_record_list, container, false);
 
 
+        getActivity().setTitle("患者记录");
+
+
         mPatientName = v.findViewById(R.id.record_list_patient_name);
         mPaientInfo1 = v.findViewById(R.id.record_list_patient_info1);
         mPaientInfo2 = v.findViewById(R.id.record_list_patient_info2);

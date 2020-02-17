@@ -67,6 +67,9 @@ public class RecordBrowseFragment extends Fragment {
         // inflate the fragment's layout
         View v = inflater.inflate(R.layout.fragment_record_browse, container, false);
 
+        getActivity().setTitle("记录信息");
+
+
 
         mRecordInfo = v.findViewById(R.id.record_info); // find the widget
         mRecordInfo.setText(mRecord.getRecordInfo());

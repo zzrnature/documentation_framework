@@ -4,7 +4,8 @@
     <string name="patient_title_label">Title</string>
     <string name="patient_solved_label">Solved</string>
 
-
+   <string name="title_patient_add">添加患者</string>
+   <string name="title_patient_record_list">患者记录列表</string>
 
 
     <string name="patient_name_hint">输入患者姓名</string>

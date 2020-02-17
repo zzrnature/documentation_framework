@@ -4,42 +4,57 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical">
-    <!-- TextView
-        style="?android:listSeparatorTextViewStyle"
+    <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/ -->
+        android:text="患者姓名:"/>
+
     <EditText
         android:id="@+id/patient_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/patient_name_hint"/>
+        android:layout_height="wrap_content" />
+<!--        android:hint="@string/patient_name_hint"/>-->
+
+<!--    <TextView-->
+<!--        style="?android:listSeparatorTextViewStyle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/patient_details_label"/>-->
+
+
     <TextView
-        style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/patient_details_label"/>
+        android:text="科室名称:"/>
+
+    <EditText
+        android:id="@+id/patient_info1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+<!--        android:hint="@string/patient_info1_hint"/>-->
+
    <!-- CheckBox
         android:id="@+id/patient_solved"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/patient_solved_label"/ -->
 
-    <EditText
-        android:id="@+id/patient_info1"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/patient_info1_hint"/>
+        android:text="性别:"/>
 
     <EditText
         android:id="@+id/patient_info2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/patient_info2_hint"/>
+        android:layout_height="wrap_content"/>
+
+
 
     <Button
         android:id="@+id/patient_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="患者保存"/>
+        android:text="保存患者"/>
 </LinearLayout>

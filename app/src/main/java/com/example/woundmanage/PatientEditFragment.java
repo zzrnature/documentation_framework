@@ -99,6 +99,8 @@ public class PatientEditFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_patient, container, false);
 
 
+        getActivity().setTitle("添加患者");
+
 
         // zzr added button
         // For the saving of the editing patient
