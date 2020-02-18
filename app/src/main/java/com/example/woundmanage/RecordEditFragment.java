@@ -101,8 +101,8 @@ public class RecordEditFragment extends Fragment {
         mTextView_record_patient_name.setText(mRecord.getPatient().getPatientName());
 
 
-        mTextView_record_title = v.findViewById(R.id.record_title);
-        mTextView_record_title.setText(mRecord.getTitle());
+        //mTextView_record_title = v.findViewById(R.id.record_title);
+        //mTextView_record_title.setText(mRecord.getTitle());
 
 
 
