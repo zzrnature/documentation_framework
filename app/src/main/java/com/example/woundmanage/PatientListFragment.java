@@ -1,6 +1,7 @@
 package com.example.woundmanage;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,11 +12,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
@@ -64,6 +68,13 @@ public class PatientListFragment extends Fragment {
         // set a layout manager
         mPatientRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
+        //DividerItemDecoration mDivider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
+        //mDivider.setDrawable(new ColorDrawable(ContextCompat.getColor(getActivity(),R.color.colorZzrborder)));
+        //mPatientRecyclerView.addItemDecoration(mDivider);
+
+
+        mPatientRecyclerView.addItemDecoration(new TestDividerItemDecoration());
 
         getActivity().setTitle("患者列表");
 
@@ -153,6 +164,8 @@ public class PatientListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
 
+
+
             // itemview holds a reference to the entire View you passed into super(view)
             mPatientNameTextView =  itemView.findViewById(R.id.patient_name);
             mDateTextView =  itemView.findViewById(R.id.patient_date);
@@ -162,7 +175,11 @@ public class PatientListFragment extends Fragment {
         public void bind(Patient patient) {
             mPatient = patient;
             mPatientNameTextView.setText(mPatient.getPatientName());
-            mDateTextView.setText(mPatient.getDate().toString().substring(0,11));
+
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+
+            //            mDateTextView.setText(mPatient.getDate().toString().substring(0,11));
+            mDateTextView.setText(sf.format(mPatient.getDate()));
         }
 
         @Override

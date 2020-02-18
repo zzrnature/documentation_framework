@@ -3,5 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorZzrTest1">#0099ff</color>
+    <color name="colorZzrTest1">#0A65AE</color>
+    <color name="colorZzrborder">#666666</color>
 </resources>
