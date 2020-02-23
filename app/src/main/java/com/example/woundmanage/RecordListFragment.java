@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
@@ -89,18 +90,19 @@ public class RecordListFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_record_list, container, false);
 
 
+
         getActivity().setTitle("患者记录");
 
 
         mPatientName = v.findViewById(R.id.record_list_patient_name);
-        mPaientInfo1 = v.findViewById(R.id.record_list_patient_info1);
-        mPaientInfo2 = v.findViewById(R.id.record_list_patient_info2);
+        //mPaientInfo1 = v.findViewById(R.id.record_list_patient_info1);
+        //mPaientInfo2 = v.findViewById(R.id.record_list_patient_info2);
 
 
 
         mPatientName.setText(mPatient.getPatientName());
-        mPaientInfo1.setText(mPatient.getPatientInfor1());
-        mPaientInfo2.setText(mPatient.getPatientInfor2());
+        //mPaientInfo1.setText(mPatient.getPatientInfor1());
+        //mPaientInfo2.setText(mPatient.getPatientInfor2());
 
 
         //mTitleField = (TextView) v.findViewById(R.id.record_list_patient_title); // find the widget
@@ -112,6 +114,10 @@ public class RecordListFragment extends Fragment {
         mRecordRecyclerView = v.findViewById(R.id.record_recycler_view);
         // set a layout manager
         mRecordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+        mRecordRecyclerView.addItemDecoration(new TestDividerItemDecoration());
+
 
 
         updateUI();
@@ -212,7 +218,18 @@ public class RecordListFragment extends Fragment {
         public void bind(Record record) {
             mRecord = record;
             mInfoTextView.setText(mRecord.getRecordInfo());
-            mDateTextView.setText(mRecord.getDate().toString().substring(0,11));
+
+
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+
+            mDateTextView.setText(sf.format(mRecord.getDate()));
+
+
+            //mDateTextView.setText(mRecord.getDate().toString().substring(0,11));
+
+
+
+
 
         }
 
