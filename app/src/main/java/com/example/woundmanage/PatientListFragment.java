@@ -31,6 +31,7 @@ public class PatientListFragment extends Fragment {
     private RecyclerView mPatientRecyclerView;
     private PatientAdapter mAdapter;
 
+    // what the fuck
 
     // request for the menu starting activity;
     // we use the start activity for result, so a code is needed to check with the result
