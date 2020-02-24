@@ -36,8 +36,6 @@ public class PatientListFragment extends Fragment {
     // we use the start activity for result, so a code is needed to check with the result
     //private static final int REQUEST_CODE_PATIENT = 0;
 
-
-
     // Some initialization other than inflating the view
     // we do for the Bmob and menu here.
     @Override
@@ -65,10 +63,6 @@ public class PatientListFragment extends Fragment {
         // set a layout manager
         mPatientRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-        //DividerItemDecoration mDivider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
-        //mDivider.setDrawable(new ColorDrawable(ContextCompat.getColor(getActivity(),R.color.colorZzrborder)));
-        //mPatientRecyclerView.addItemDecoration(mDivider);
 
 
         mPatientRecyclerView.addItemDecoration(new TestDividerItemDecoration());
