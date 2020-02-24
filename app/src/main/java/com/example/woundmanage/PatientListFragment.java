@@ -32,6 +32,7 @@ public class PatientListFragment extends Fragment {
     private PatientAdapter mAdapter;
 
     // what the fuck
+    // what the fuck
 
     // request for the menu starting activity;
     // we use the start activity for result, so a code is needed to check with the result
