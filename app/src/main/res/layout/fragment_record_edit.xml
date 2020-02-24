@@ -39,7 +39,7 @@
         android:id="@+id/record_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="800dp"
+        android:layout_marginTop="900dp"
         android:layout_marginBottom="20dp"
         android:text="record_save"
         app:layout_constraintBottom_toBottomOf="parent"
