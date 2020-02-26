@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +43,12 @@ public class RecordEditFragment extends Fragment {
     private TextView mTextView_record_title;   // shows the patient name
     private TextView mTextView_record_patient_name;   // shows the patient name
     private Button mButton_save_record;
+    private RadioGroup mRadioGroup1;
+    private RadioGroup mRadioGroup2;
+    private RadioButton mRadioButton1;
+    private RadioButton mRadioButton2;
+    private RadioButton mRadioButton3;
+    private RadioButton mRadioButton4;
 
     //----------------------------------------------------------------
     // Public fragment creation method.
@@ -78,6 +87,8 @@ public class RecordEditFragment extends Fragment {
         // get arguments from host activity
         mRecord = (Record) getArguments().getSerializable(ARG_RECORD);
         mActivityRecordString = (String) getArguments().getSerializable(ARG_RECORD_BACK);
+
+
     }
 
 
@@ -103,6 +114,19 @@ public class RecordEditFragment extends Fragment {
 
         //mTextView_record_title = v.findViewById(R.id.record_title);
         //mTextView_record_title.setText(mRecord.getTitle());
+
+        mRadioGroup1 = v.findViewById(R.id.radioGroup1);
+        mRadioGroup2 = v.findViewById(R.id.radioGroup2);
+
+        mRadioButton1 = v.findViewById(R.id.radioButton1);
+        mRadioButton2 = v.findViewById(R.id.radioButton2);
+        mRadioButton3 = v.findViewById(R.id.radioButton3);
+        mRadioButton4 = v.findViewById(R.id.radioButton4);
+
+
+        mRadioGroup1.setOnCheckedChangeListener(listener1);
+        mRadioGroup2.setOnCheckedChangeListener(listener2);
+
 
 
 
@@ -164,6 +188,81 @@ public class RecordEditFragment extends Fragment {
         return v;
     }
 
+
+    private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+                mRadioGroup2.setOnCheckedChangeListener(null); // remove the listener before clearing so we don't throw that stackoverflow exception(like Vladimir Volodin pointed out)
+                mRadioGroup2.clearCheck(); // clear the second RadioGroup!
+                mRadioGroup2.setOnCheckedChangeListener(listener2); //reset the listener
+                //Log.e("XXX2", "do the work");
+
+                switch ( group.getCheckedRadioButtonId()){
+                    case R.id.radioButton1:
+                        toast("b1 pushed");
+                        break;
+                    case R.id.radioButton2 :
+                        toast("b2 pushed");
+                        break;
+                }
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener listener2 = new RadioGroup.OnCheckedChangeListener() {
+
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+                mRadioGroup1.setOnCheckedChangeListener(null);
+                mRadioGroup1.clearCheck();
+                mRadioGroup1.setOnCheckedChangeListener(listener1);
+                //Log.e("XXX2", "do the work");
+
+                switch ( group.getCheckedRadioButtonId()){
+                    case R.id.radioButton3:
+                        toast("b3 pushed");
+                        break;
+                    case R.id.radioButton4 :
+                        toast("b4 pushed");
+                        break;
+                }
+            }
+        }
+    };
+
+
+
+
+
+//    public void handleCombinedClick(View view) {
+//        // Clear any checks from both groups:
+//        mRadioGroup1.clearCheck();
+//        //mRadioGroup2.clearCheck();
+//
+//
+//        // Manually set the check in the newly clicked radio button:
+////        ((RadioButton) view).setChecked(true);
+////
+////        // Perform any action desired for the new selection:
+////        switch (view.getId()) {
+////            case R.id.radioButton1:
+////                // do something
+////                toast("button 1 checked");
+////
+////                break;
+////
+////            case R.id.radioButton3:
+////                toast("button 3 checked");
+////                // do something
+////                break;
+////
+////
+////        }
+//    }
 
 
 
