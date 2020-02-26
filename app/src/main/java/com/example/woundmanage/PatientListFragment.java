@@ -32,11 +32,6 @@ public class PatientListFragment extends Fragment {
     private PatientAdapter mAdapter;
 
 
-    // request for the menu starting activity;
-    // we use the start activity for result, so a code is needed to check with the result
-    //private static final int REQUEST_CODE_PATIENT = 0;
-
-
     // Some initialization other than inflating the view
     // we do for the Bmob and menu here.
     @Override
